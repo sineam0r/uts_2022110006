@@ -1,7 +1,37 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:uts_2022110006/models/product.dart';
+import 'package:uts_2022110006/screens/product_screen.dart';
 
 class HomeScreen extends StatelessWidget {
-  const HomeScreen({super.key});
+  HomeScreen({super.key});
+
+  final List<Product> products = [
+    Product(
+      id: 1,
+      title: 'Product 1',
+      price: 350000,
+      image: 'https://flutter.github.io/assets-for-api-docs/assets/widgets/owl-2.jpg',
+    ),
+    Product(
+      id: 2,
+      title: 'Product 2',
+      price: 500000,
+      image: 'https://flutter.github.io/assets-for-api-docs/assets/widgets/owl-2.jpg',
+    ),
+    Product(
+      id: 3,
+      title: 'Product 3',
+      price: 700000,
+      image: 'https://flutter.github.io/assets-for-api-docs/assets/widgets/owl-2.jpg',
+    ),
+    Product(
+      id: 4,
+      title: 'Product 43',
+      price: 900000,
+      image: '',
+    ),
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -40,10 +70,16 @@ class HomeScreen extends StatelessWidget {
                   crossAxisSpacing: 20,
                   mainAxisSpacing: 20,
                 ),
-                itemCount: 3,
+                itemCount: products.length,
                 itemBuilder: (context, index) {
                   return InkWell(
                     onTap: () {
+                      Navigator.push(
+                        context,
+                        CupertinoPageRoute(
+                          builder: (context) => const ProductScreen(),
+                        ),
+                      );
                     },
                     child: Card(
                       elevation: 2,
@@ -54,18 +90,26 @@ class HomeScreen extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Expanded(
-                            child: Container(
-                              decoration: const BoxDecoration(
-                                color: Colors.grey,
-                                borderRadius: BorderRadius.vertical(top: Radius.circular(8)),
+                            child: ClipRRect(
+                              borderRadius: const BorderRadius.vertical(top: Radius.circular(8)),
+                              child: Image.network(
+                                products[index].image,
+                                fit: BoxFit.cover,
+                                width: double.infinity,
+                                errorBuilder: (context, error, stackTrace) {
+                                  return Container(
+                                    color: Colors.grey,
+                                    child: const Icon(Icons.image),
+                                  );
+                                },
                               ),
                             ),
                           ),
-                          const Padding(
-                            padding: EdgeInsets.all(8.0),
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
                             child: Text(
-                              'Title',
-                              style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                              products[index].title,
+                              style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                             ),
                           ),
                         ],
