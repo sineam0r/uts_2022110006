@@ -27,7 +27,7 @@ class HomeScreen extends StatelessWidget {
     ),
     Product(
       id: 4,
-      title: 'Product 43',
+      title: 'Product 4',
       price: 900000,
       image: '',
     ),
@@ -78,6 +78,7 @@ class HomeScreen extends StatelessWidget {
                         context,
                         CupertinoPageRoute(
                           builder: (context) => const ProductScreen(),
+                          settings: RouteSettings(arguments: products[index]),
                         ),
                       );
                     },
@@ -99,6 +100,7 @@ class HomeScreen extends StatelessWidget {
                                 errorBuilder: (context, error, stackTrace) {
                                   return Container(
                                     color: Colors.grey,
+                                    width: double.infinity,
                                     child: const Icon(Icons.image),
                                   );
                                 },
