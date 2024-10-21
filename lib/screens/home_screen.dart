@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:uts_2022110006/models/product.dart';
 import 'package:uts_2022110006/screens/product_screen.dart';
 
@@ -76,7 +75,7 @@ class HomeScreen extends StatelessWidget {
                     onTap: () {
                       Navigator.push(
                         context,
-                        CupertinoPageRoute(
+                        MaterialPageRoute(
                           builder: (context) => const ProductScreen(),
                           settings: RouteSettings(arguments: products[index]),
                         ),
