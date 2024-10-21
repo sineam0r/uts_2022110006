@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:provider/provider.dart';
 import 'package:uts_2022110006/models/product.dart';
+import 'package:uts_2022110006/providers/cart_provider.dart';
 import 'package:uts_2022110006/screens/home_screen.dart';
 import 'package:uts_2022110006/widgets/quantity_widget.dart';
 
@@ -8,7 +9,6 @@ class ProductScreen extends StatefulWidget {
   const ProductScreen({super.key});
 
   @override
-  // ignore: library_private_types_in_public_api
   _ProductScreenState createState() => _ProductScreenState();
 }
 
@@ -18,6 +18,7 @@ class _ProductScreenState extends State<ProductScreen> {
   @override
   Widget build(BuildContext context) {
     final Product product = ModalRoute.of(context)!.settings.arguments as Product;
+    final cartProvider = Provider.of<CartProvider>(context, listen: false);
 
     return Scaffold(
       appBar: AppBar(
@@ -96,17 +97,20 @@ class _ProductScreenState extends State<ProductScreen> {
                   ),
                   ElevatedButton(
                     onPressed: () {
-                      // TODO: Implement add to cart functionality
+                      for (int i = 0; i < _quantity; i++) {
+                        cartProvider.addItem(product);
+                      }
                       ScaffoldMessenger.of(context).showSnackBar(
                         SnackBar(
                           content: Text('Added $_quantity ${product.title}(s) to cart'),
                         ),
                       );
-                      Navigator.push(
+                      Navigator.pushAndRemoveUntil(
                         context,
-                        CupertinoPageRoute(
+                        MaterialPageRoute(
                           builder: (context) => HomeScreen(),
                         ),
+                        (route) => false,
                       );
                     },
                     child: const Text('Add to Cart'),
@@ -120,4 +124,3 @@ class _ProductScreenState extends State<ProductScreen> {
     );
   }
 }
-

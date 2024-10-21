@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:uts_2022110006/models/product.dart';
+import 'package:uts_2022110006/screens/cart_screen.dart';
 import 'package:uts_2022110006/screens/product_screen.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -126,6 +127,12 @@ class HomeScreen extends StatelessWidget {
       floatingActionButton: FloatingActionButton(
         child: const Icon(Icons.shopping_cart),
         onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => const CartScreen(cartItems: [],),
+            ),
+          );
         },
       ),
     );
