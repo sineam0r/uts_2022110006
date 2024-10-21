@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:uts_2022110006/models/product.dart';
+import 'package:uts_2022110006/providers/cart_provider.dart';
 import 'package:uts_2022110006/screens/cart_screen.dart';
 import 'package:uts_2022110006/screens/product_screen.dart';
 
@@ -35,6 +37,7 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Provider.of<CartProvider>(context, listen: false).loadItems();
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
@@ -130,7 +133,7 @@ class HomeScreen extends StatelessWidget {
           Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (context) => const CartScreen(cartItems: [],),
+              builder: (context) => const CartScreen(),
             ),
           );
         },

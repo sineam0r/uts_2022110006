@@ -37,6 +37,12 @@ class CartProvider with ChangeNotifier {
     }
   }
 
+  void clearCart() {
+    _items.clear();
+    notifyListeners();
+    _saveToPrefs();
+  }
+
   Future<void> loadItems() async {
     final prefs = await SharedPreferences.getInstance();
     String? cartJson = prefs.getString('cart');
