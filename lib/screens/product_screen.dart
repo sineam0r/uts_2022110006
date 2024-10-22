@@ -92,14 +92,7 @@ class _ProductScreenState extends State<ProductScreen> {
                 children: [
                   Row(
                     children: [
-                      Text(
-                        'Quantity:',
-                        style: GoogleFonts.inconsolata(
-                          fontSize: 18,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      const SizedBox(width: 16),
+                      const SizedBox(width: 6),
                       QuantityInput(
                         onChanged: (value) {
                           setState(() {

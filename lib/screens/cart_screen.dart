@@ -127,10 +127,16 @@ class CartScreen extends StatelessWidget {
                         ),
                         actions: [
                           TextButton(
+                            style: TextButton.styleFrom(
+                              foregroundColor: Colors.blue[900],
+                            ),
                             onPressed: () => Navigator.of(context).pop(),
                             child: const Text('Cancel'),
                           ),
                           TextButton(
+                            style: TextButton.styleFrom(
+                              foregroundColor: Colors.blue[900],
+                            ),
                             onPressed: () {
                               cartProvider.clearCart();
                               Navigator.of(context).pop();

@@ -86,6 +86,9 @@ class _LoginScreenState extends State<LoginScreen> {
                           hintText: 'ambafood@gmail.com',
                           hintStyle: TextStyle(color: Colors.grey),
                           prefixIcon: Icon(Icons.email),
+                          focusedBorder: UnderlineInputBorder(
+                            borderSide: BorderSide(color: Colors.blue),
+                          ),
                         ),
                         validator: (value) {
                           if (value == null || value.isEmpty) {
@@ -115,6 +118,9 @@ class _LoginScreenState extends State<LoginScreen> {
                                 obscureText = !obscureText;
                               });
                             },
+                          ),
+                          focusedBorder: const UnderlineInputBorder(
+                            borderSide: BorderSide(color: Colors.blue),
                           ),
                         ),
                         validator: (value) {
