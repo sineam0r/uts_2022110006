@@ -11,27 +11,45 @@ class HomeScreen extends StatelessWidget {
   final List<Product> products = [
     Product(
       id: 1,
-      title: 'Product 1',
-      price: 350000,
-      image: 'https://flutter.github.io/assets-for-api-docs/assets/widgets/owl-2.jpg',
+      title: 'Burger',
+      price: 35000,
+      image: 'https://images.unsplash.com/photo-1516774266634-15661f692c19?q=80&w=1973&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+      description: 'Perpaduan sempurna antara daging sapi premium yang juicy dan bumbu khas, dipanggang hingga tingkat kematangan sempurna. Dilengkapi dengan irisan tomat segar, selada crispy, acar, dan saus mayo khusus yang memberikan sensasi gurih dan creamy. Semua bahan ini disatukan dalam roti lembut yang dipanggang sempurna.',
     ),
     Product(
       id: 2,
-      title: 'Product 2',
-      price: 500000,
-      image: 'https://flutter.github.io/assets-for-api-docs/assets/widgets/owl-2.jpg',
+      title: 'Pizza',
+      price: 70000,
+      image: 'https://images.unsplash.com/photo-1620374643762-9c0e91a22b10?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+      description: 'Pizza klasik yang disukai semua orang. Dibuat dengan adonan yang dipanggang sempurna, menghasilkan tekstur renyah di luar namun lembut di dalam. Pizza ini dilapisi saus tomat khas Italia yang kaya rasa, ditaburi keju mozzarella yang meleleh dengan sempurna, dan topping irisan pepperoni premium yang gurih dan sedikit pedas.',
     ),
     Product(
       id: 3,
-      title: 'Product 3',
-      price: 700000,
-      image: 'https://flutter.github.io/assets-for-api-docs/assets/widgets/owl-2.jpg',
+      title: 'Hot Dog',
+      price: 25000,
+      image: 'https://images.unsplash.com/photo-1515875976234-9d59c3ef288d?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+      description: 'Hot dog yang menggugah selera dan cocok untuk segala suasana. Sosis premium yang juicy, dipanggang hingga sempurna, disajikan dalam roti bun lembut yang empuk. Dilengkapi dengan mustard dan saus tomat.',
     ),
     Product(
       id: 4,
-      title: 'Product 4',
-      price: 900000,
-      image: '',
+      title: 'Fried Chicken',
+      price: 23000,
+      image: 'https://images.unsplash.com/photo-1569058242253-92a9c755a0ec?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+      description: 'Ayam goreng yang dibalut dengan tepung berbumbu istimewa. Setiap potong ayam digoreng hingga keemasan, menghasilkan kulit yang renyah dan daging yang juicy serta lembut di dalam. Dengan bumbu rahasia yang meresap hingga ke dalam, fried chicken ini memberikan perpaduan rasa gurih dan sedikit pedas di setiap gigitan.',
+    ),
+    Product(
+      id: 5,
+      title: 'Lemonade',
+      price: 13000,
+      image: 'https://images.unsplash.com/photo-1507281549113-040fcfef650e?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+      description: 'Minuman yang memadukan kesegaran perasan lemon asli dengan manisnya gula alami dan sedikit es batu yang menambah kesegaran. Rasanya yang asam-manis dan menyegarkan membuat minuman ini sempurna untuk dinikmati di cuaca panas atau sebagai pendamping makanan favorit Anda. Lemonade ini tidak hanya enak, tetapi juga kaya akan vitamin C.',
+    ),
+    Product(
+      id: 6,
+      title: 'Cola',
+      price: 15000,
+      image: 'https://images.unsplash.com/photo-1711154319702-70f9e8c3a90f?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+      description: 'Minuman bersoda yang menawarkan kombinasi sempurna antara rasa manis dan segarnya gelembung karbonasi. Cocok dinikmati dalam segala suasana, baik sebagai pendamping makanan atau sebagai penyegar di hari-hari sibuk Anda.',
     ),
   ];
 
@@ -132,6 +150,7 @@ class HomeScreen extends StatelessWidget {
         ],
       ),
       floatingActionButton: FloatingActionButton(
+        backgroundColor: Colors.grey,
         child: const Icon(Icons.shopping_cart),
         onPressed: () {
           Navigator.push(

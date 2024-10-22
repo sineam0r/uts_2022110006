@@ -63,6 +63,11 @@ class _QuantityInputState extends State<QuantityInput> {
             controller: _controller,
             keyboardType: TextInputType.number,
             textAlign: TextAlign.center,
+            decoration: const InputDecoration(
+              focusedBorder: UnderlineInputBorder(
+                borderSide: BorderSide(color: Colors.blue),
+              ),
+            ),
             onChanged: (value) {
               int? newValue = int.tryParse(value);
               if (newValue != null && newValue > 0) {

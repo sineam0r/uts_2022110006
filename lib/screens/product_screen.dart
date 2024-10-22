@@ -67,9 +67,9 @@ class _ProductScreenState extends State<ProductScreen> {
                     style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                   ),
                   const SizedBox(height: 8),
-                  const Text(
-                    'Lorem ipsum dolor sit amet.',
-                    style: TextStyle(fontSize: 16),
+                  Text(
+                    product.description,
+                    style: const TextStyle(fontSize: 16),
                   ),
                 ],
               ),
@@ -96,6 +96,9 @@ class _ProductScreenState extends State<ProductScreen> {
                     ],
                   ),
                   ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.blue[900]
+                    ),
                     onPressed: () {
                       for (int i = 0; i < _quantity; i++) {
                         cartProvider.addItem(product);
@@ -113,7 +116,8 @@ class _ProductScreenState extends State<ProductScreen> {
                         (route) => false,
                       );
                     },
-                    child: const Text('Add to Cart'),
+                    child: const Text('Add to Cart',
+                    style: TextStyle(color: Colors.white)),
                   ),
                 ],
               ),

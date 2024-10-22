@@ -100,13 +100,15 @@ class CartScreen extends StatelessWidget {
                 const SizedBox(height: 16),
                 ElevatedButton(
                   style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.blue[900],
                     padding: const EdgeInsets.symmetric(vertical: 16),
                     minimumSize: const Size(double.infinity, 50),
                   ),
                   onPressed: () {
                     cartProvider.clearCart();
                   },
-                  child: const Text('Checkout'),
+                  child: const Text('Checkout',
+                  style: TextStyle(color: Colors.white)),
                 ),
               ],
             ),

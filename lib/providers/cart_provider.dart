@@ -54,6 +54,7 @@ class CartProvider with ChangeNotifier {
           title: item['product']['title'],
           price: item['product']['price'].toDouble(),
           image: item['product']['image'],
+          description: item['product']['description'],
         ),
         quantity: item['quantity'],
       )).toList();
@@ -69,6 +70,7 @@ class CartProvider with ChangeNotifier {
         'title': item.product.title,
         'price': item.product.price,
         'image': item.product.image,
+        'description': item.product.description,
       },
       'quantity': item.quantity,
     }).toList());
