@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:uts_2022110006/models/product.dart';
 import 'package:uts_2022110006/providers/cart_provider.dart';
 import 'package:uts_2022110006/screens/cart_screen.dart';
+import 'package:uts_2022110006/screens/login_screen.dart';
 import 'package:uts_2022110006/screens/product_screen.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -59,8 +60,14 @@ class HomeScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
-          icon: const Icon(Icons.menu),
+          icon: const Icon(Icons.logout),
           onPressed: () {
+            Navigator.pushReplacement(
+              context,
+              MaterialPageRoute(
+                builder: (context) => const LoginScreen(),
+              ),
+            );
           },
         ),
         actions: [
