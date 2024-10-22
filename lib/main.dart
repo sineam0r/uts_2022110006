@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:uts_2022110006/providers/cart_provider.dart';
-import 'package:uts_2022110006/screens/home_screen.dart';
+import 'package:uts_2022110006/screens/login_screen.dart';
 
 void main() {
   runApp(
@@ -24,7 +24,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: HomeScreen(),
+      home: const LoginScreen(),
     );
   }
 }
