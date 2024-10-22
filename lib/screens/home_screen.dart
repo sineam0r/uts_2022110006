@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:uts_2022110006/models/product.dart';
 import 'package:uts_2022110006/providers/cart_provider.dart';
@@ -59,8 +60,16 @@ class HomeScreen extends StatelessWidget {
     Provider.of<CartProvider>(context, listen: false).loadItems();
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Colors.blue[900],
+        title: Text(
+          'AmbaFood',
+          style: GoogleFonts.karla(
+            fontSize: 24,
+            color: Colors.white,
+          ),
+        ),
         leading: IconButton(
-          icon: const Icon(Icons.logout),
+          icon: const Icon(Icons.logout, color: Colors.white),
           onPressed: () {
             Navigator.pushReplacement(
               context,
@@ -72,7 +81,7 @@ class HomeScreen extends StatelessWidget {
         ),
         actions: [
           IconButton(
-            icon: const Icon(Icons.search),
+            icon: const Icon(Icons.search, color: Colors.white),
             onPressed: () {
               showSearch(
                 context: context,
@@ -85,11 +94,14 @@ class HomeScreen extends StatelessWidget {
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Padding(
-            padding: EdgeInsets.all(16.0),
+          Padding(
+            padding: const EdgeInsets.all(16.0),
             child: Text(
               'Our products',
-              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+              style: GoogleFonts.karla(
+                fontSize: 24,
+                fontWeight: FontWeight.bold,
+              ),
             ),
           ),
           Expanded(
@@ -143,7 +155,10 @@ class HomeScreen extends StatelessWidget {
                             padding: const EdgeInsets.all(8.0),
                             child: Text(
                               products[index].title,
-                              style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                              style: GoogleFonts.inconsolata(
+                                fontSize: 16,
+                                fontWeight: FontWeight.bold,
+                              ),
                             ),
                           ),
                         ],
@@ -157,8 +172,8 @@ class HomeScreen extends StatelessWidget {
         ],
       ),
       floatingActionButton: FloatingActionButton(
-        backgroundColor: Colors.grey,
-        child: const Icon(Icons.shopping_cart),
+        backgroundColor: Colors.blue[900],
+        child: const Icon(Icons.shopping_cart, color: Colors.white,),
         onPressed: () {
           Navigator.push(
             context,
@@ -274,13 +289,45 @@ class ProductSearchDelegate extends SearchDelegate<Product?> {
       itemCount: suggestions.length,
       itemBuilder: (context, index) {
         return ListTile(
-          title: Text(suggestions[index].title),
+          leading: Image.network(
+            suggestions[index].image,
+            width: 50,
+            height: 50,
+            fit: BoxFit.cover,
+            errorBuilder: (context, error, stackTrace) {
+              return const Icon(Icons.image);
+            },
+          ),
+          title: Text(suggestions[index].title, style: GoogleFonts.karla()),
+          subtitle: Text('Rp ${suggestions[index].price.toStringAsFixed(0)}', style: GoogleFonts.inconsolata()),
           onTap: () {
-            query = suggestions[index].title;
-            showResults(context);
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => const ProductScreen(),
+                settings: RouteSettings(arguments: suggestions[index]),
+              ),
+            );
           },
         );
       },
+    );
+  }
+
+  @override
+  ThemeData appBarTheme(BuildContext context) {
+    return Theme.of(context).copyWith(
+      appBarTheme: AppBarTheme(
+        backgroundColor: Colors.blue[900],
+        iconTheme: const IconThemeData(color: Colors.white),
+      ),
+      inputDecorationTheme: const InputDecorationTheme(
+        hintStyle: TextStyle(color: Colors.white),
+      ),
+      textTheme: const TextTheme(
+        titleLarge: TextStyle(color: Colors.white),
+      ),
+      iconTheme: const IconThemeData(color: Colors.white),
     );
   }
 }

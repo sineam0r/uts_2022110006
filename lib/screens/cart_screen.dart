@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:uts_2022110006/providers/cart_provider.dart';
 
@@ -9,9 +10,16 @@ class CartScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Cart'),
+        backgroundColor: Colors.blue[900],
+        title: Text(
+          'Cart',
+          style: GoogleFonts.karla(
+            fontSize: 24,
+            color: Colors.white,
+          ),
+        ),
         leading: IconButton(
-          icon: const Icon(Icons.arrow_back),
+          icon: const Icon(Icons.arrow_back, color: Colors.white,),
           onPressed: () => Navigator.of(context).pop(),
         ),
       ),
@@ -45,18 +53,19 @@ class CartScreen extends StatelessWidget {
                           children: [
                             Text(
                               item.product.title,
-                              style: const TextStyle(
+                              style: GoogleFonts.karla(
                                   fontSize: 16, fontWeight: FontWeight.bold),
                             ),
                             Text(
                               'Rp ${item.product.price.toStringAsFixed(0)} x ${item.quantity}',
+                              style: GoogleFonts.inconsolata(),
                             ),
                           ],
                         ),
                       ),
                       Text(
                         'Rp ${(item.product.price * item.quantity).toStringAsFixed(0)}',
-                        style: const TextStyle(
+                        style: GoogleFonts.inconsolata(
                             fontSize: 16, fontWeight: FontWeight.bold),
                       ),
                       IconButton(
@@ -85,14 +94,14 @@ class CartScreen extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    const Text(
+                    Text(
                       'Total:',
-                      style:
-                          TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                      style: GoogleFonts.inconsolata(
+                          fontSize: 18, fontWeight: FontWeight.bold),
                     ),
                     Text(
                       'Rp ${totalPrice.toStringAsFixed(0)}',
-                      style: const TextStyle(
+                      style: GoogleFonts.inconsolata(
                           fontSize: 18, fontWeight: FontWeight.bold),
                     ),
                   ],
@@ -105,10 +114,36 @@ class CartScreen extends StatelessWidget {
                     minimumSize: const Size(double.infinity, 50),
                   ),
                   onPressed: () {
-                    cartProvider.clearCart();
+                    showDialog(
+                      context: context,
+                      builder: (context) => AlertDialog(
+                        title: Text(
+                          'Are you sure?',
+                          style: GoogleFonts.karla(),
+                        ),
+                        content: Text(
+                          'Are you sure you want to checkout?',
+                          style: GoogleFonts.karla(),
+                        ),
+                        actions: [
+                          TextButton(
+                            onPressed: () => Navigator.of(context).pop(),
+                            child: const Text('Cancel'),
+                          ),
+                          TextButton(
+                            onPressed: () {
+                              cartProvider.clearCart();
+                              Navigator.of(context).pop();
+                            },
+                            child: const Text('OK'),
+                          ),
+                        ],
+                      ),
+                    );
                   },
-                  child: const Text('Checkout',
-                  style: TextStyle(color: Colors.white)),
+                  child: Text('Checkout',
+                    style: GoogleFonts.inconsolata(color: Colors.white)
+                  ),
                 ),
               ],
             ),

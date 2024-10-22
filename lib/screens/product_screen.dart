@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:uts_2022110006/models/product.dart';
 import 'package:uts_2022110006/providers/cart_provider.dart';
@@ -22,10 +23,10 @@ class _ProductScreenState extends State<ProductScreen> {
 
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.white,
+        backgroundColor: Colors.blue[900],
         elevation: 0,
         leading: IconButton(
-          icon: const Icon(Icons.arrow_back, color: Colors.black),
+          icon: const Icon(Icons.arrow_back, color: Colors.white),
           onPressed: () => Navigator.of(context).pop(),
         ),
       ),
@@ -54,22 +55,32 @@ class _ProductScreenState extends State<ProductScreen> {
                 children: [
                   Text(
                     product.title,
-                    style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                    style: GoogleFonts.karla(
+                      fontSize: 24,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
                   const SizedBox(height: 8),
                   Text(
                     'Rp ${product.price.toStringAsFixed(0)}',
-                    style: const TextStyle(fontSize: 20),
+                    style: GoogleFonts.inconsolata(
+                      fontSize: 20,
+                    ),
                   ),
                   const SizedBox(height: 16),
-                  const Text(
+                  Text(
                     'Product Description',
-                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                    style: GoogleFonts.karla(
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
                   const SizedBox(height: 8),
                   Text(
                     product.description,
-                    style: const TextStyle(fontSize: 16),
+                    style: GoogleFonts.inconsolata(
+                      fontSize: 18,
+                    ),
                   ),
                 ],
               ),
@@ -81,9 +92,12 @@ class _ProductScreenState extends State<ProductScreen> {
                 children: [
                   Row(
                     children: [
-                      const Text(
+                      Text(
                         'Quantity:',
-                        style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                        style: GoogleFonts.inconsolata(
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
                       const SizedBox(width: 16),
                       QuantityInput(
@@ -116,8 +130,10 @@ class _ProductScreenState extends State<ProductScreen> {
                         (route) => false,
                       );
                     },
-                    child: const Text('Add to Cart',
-                    style: TextStyle(color: Colors.white)),
+                    child: Text('Add to Cart',
+                    style: GoogleFonts.inconsolata(
+                      color: Colors.white,
+                    )),
                   ),
                 ],
               ),

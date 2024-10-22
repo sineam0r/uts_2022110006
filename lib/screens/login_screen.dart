@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:uts_2022110006/screens/home_screen.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -14,8 +15,8 @@ class _LoginScreenState extends State<LoginScreen> {
   final passwordController = TextEditingController();
   bool obscureText = true;
 
-  final String email = 'resto@gmail.com';
-  final String password = 'admin123';
+  final String email = 'ambafood@gmail.com';
+  final String password = 'ambafood';
 
   @override
   void dispose() {
@@ -61,10 +62,13 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
               ),
               const SizedBox(height: 16),
-              const Text(
+              Text(
                 'Welcome to AmbaFood',
                 textAlign: TextAlign.center,
-                style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
+                style: GoogleFonts.karla(
+                  fontSize: 30,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
               Padding(
                 padding: const EdgeInsets.all(24.0),
@@ -79,7 +83,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         keyboardType: TextInputType.emailAddress,
                         decoration: const InputDecoration(
                           labelText: 'Email',
-                          hintText: 'resto@gmail.com',
+                          hintText: 'ambafood@gmail.com',
                           hintStyle: TextStyle(color: Colors.grey),
                           prefixIcon: Icon(Icons.email),
                         ),
@@ -99,7 +103,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         obscureText: obscureText,
                         decoration: InputDecoration(
                           labelText: 'Password',
-                          hintText: 'admin123',
+                          hintText: 'ambafood',
                           hintStyle: const TextStyle(color: Colors.grey),
                           prefixIcon: const Icon(Icons.lock),
                           suffixIcon: IconButton(
@@ -130,9 +134,9 @@ class _LoginScreenState extends State<LoginScreen> {
                           padding: const EdgeInsets.symmetric(vertical: 16),
                           backgroundColor: Colors.blue[900],
                         ),
-                        child: const Text(
+                        child: Text(
                           'Login',
-                          style: TextStyle(
+                          style: GoogleFonts.inconsolata(
                             fontSize: 16,
                             fontWeight: FontWeight.bold,
                             color: Colors.white,
@@ -140,9 +144,9 @@ class _LoginScreenState extends State<LoginScreen> {
                         ),
                       ),
                       const SizedBox(height: 16),
-                      const Text(
-                        'Email: resto@gmail.com\nPassword: admin123',
-                        style: TextStyle(color: Colors.grey),
+                      Text(
+                        'Email: ambafood@gmail.com\nPassword: ambafood',
+                        style: GoogleFonts.inconsolata(color: Colors.grey),
                         textAlign: TextAlign.center,
                       ),
                     ],
